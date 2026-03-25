@@ -1,0 +1,237 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;500&family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+    --marvel-red: #e62429;
+    --dark-bg: #0a0a0a;
+    --card-bg: rgba(20, 20, 20, 0.85);
+    --text-light: #e5e5e5;
+    --text-dim: #9ca3af;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--dark-bg);
+    color: var(--text-light);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* NAVBAR (UPGRADED) */
+header {
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.7);
+    border-bottom: 1px solid var(--marvel-red);
+    z-index: 1000;
+    padding: 15px 40px;
+}
+
+.logo {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--marvel-red);
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-dim);
+    position: relative;
+    transition: 0.3s;
+}
+
+/* NAV HOVER LINE */
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background: var(--marvel-red);
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+    background: radial-gradient(circle at center, #1a0000, #000);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+}
+
+.hero span {
+    color: var(--marvel-red);
+}
+
+.hero p {
+    color: var(--text-dim);
+    margin-top: 10px;
+}
+
+/* BUTTON (NEW) */
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 28px;
+    border: 1px solid var(--marvel-red);
+    color: var(--marvel-red);
+    text-decoration: none;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    color: white;
+    background: var(--marvel-red);
+    box-shadow: 0 0 20px var(--marvel-red);
+}
+
+/* SECTIONS */
+.section {
+    padding: 80px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: reveal 1s forwards;
+}
+
+.section h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--marvel-red);
+    margin-bottom: 25px;
+}
+
+/* CARDS (GLASS + HUD STYLE) */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #222;
+    backdrop-filter: blur(8px);
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* HUD BORDER GLOW */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    background: linear-gradient(120deg, transparent, var(--marvel-red), transparent);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.card:hover::before {
+    opacity: 0.3;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    border-color: var(--marvel-red);
+}
+
+/* PROJECT IMAGE SUPPORT */
+.card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    opacity: 0.85;
+    transition: 0.3s;
+}
+
+.card:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* TEXT */
+.card h3 {
+    color: white;
+}
+
+.card p {
+    color: var(--text-dim);
+    margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+    background: #000;
+    padding: 20px;
+    border-top: 1px solid var(--marvel-red);
+    color: #777;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SCROLL SMOOTH */
+html {
+    scroll-behavior: smooth;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    nav ul {
+        display: none; /* ready for hamburger later */
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+}
